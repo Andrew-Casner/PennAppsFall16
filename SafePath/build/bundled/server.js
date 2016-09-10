@@ -7,4 +7,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(8080);
+app.listen(process.env.PORT, process.env.IP);
+
+console.log('Server running at http://' + process.env.IP + ':' + process.env.PORT);

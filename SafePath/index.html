@@ -95,5 +95,21 @@
 </paper-card>
 
 </template>
+  <script type="text/javascript">
+      var myLatLng = {lat: 39.953173, lng: -75.192865};
+    
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: myLatLng
+      });
+    
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    
+    
+  </script>
 </body>
 </html>
