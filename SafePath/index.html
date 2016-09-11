@@ -64,8 +64,7 @@
 			end-address="{{end}}"
 			travel-mode="{{travelMode}}">
 		</google-map-directions>
-	</template>
-		<div style="bottom: 25px; left: 25px; position: absolute"> 
+		<div style="bottom: 25px; left: 25px; z-index: 100; position: absolute"> 
 			<paper-card elevation="2">
 				<paper-icon-item>
 					<iron-icon icon="search" item-icon></iron-icon>
@@ -97,6 +96,7 @@
 					</paper-tab>
 				</paper-tabs>
 			</paper-card>
+	</template>
 		</div>
 		<script>
 				Polymer({
