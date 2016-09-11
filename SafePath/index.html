@@ -1,95 +1,103 @@
 <!doctype html>
 <html>
 <head>
-  <title>SafePath</title>
+	<title>SafePath</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-  
-  <link rel="import" href="bower_components/google-map/google-map.html">
-  <link rel="import" href="bower_components/google-map/google-map-directions.html">
-  <link rel="import" href="bower_components/iron-icon/iron-icon.html">
-  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-  <link rel="import" href="bower_components/paper-item/paper-item.html">
-  <link rel="import" href="bower_components/paper-item/paper-icon-item.html">
-  <link rel="import" href="bower_components/paper-input/paper-input.html">
-  <link rel="import" href="bower_components/paper-card/paper-card.html">
-  <link rel="import" href="bower_components/iron-icons/maps-icons.html">
-  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
-  
-  <link rel="stylesheet" href="styles.css">
-  
-  <style is="custom-style">
-	paper-card{
-	}
-    paper-tabs {
-      --paper-tabs-selection-bar-color: #0D47A1;
-      margin-top: 16px;
-    }
-    paper-tab {
-      --paper-tab-ink: #BBDEFB;
-    }
+	<link rel="import" href="bower_components/google-map/google-map.html">
+	<link rel="import" href="bower_components/google-map/google-map-directions.html">
+	<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="bower_components/paper-item/paper-item.html">
+	<link rel="import" href="bower_components/paper-item/paper-icon-item.html">
+	<link rel="import" href="bower_components/paper-input/paper-input.html">
+	<link rel="import" href="bower_components/paper-card/paper-card.html">
+	<link rel="import" href="bower_components/iron-icons/maps-icons.html">
+	<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
 
-    paper-tab iron-icon {
-      margin-right: 10px;
-    }
-    paper-tab.iron-selected {
-      background: rgb(66, 133, 244);
-      color: white;
-    }
-  </style>
-  
+
+	<link rel="stylesheet" href="styles.css">
+
+	<style is="custom-style">
+		paper-card{
+		}
+		paper-tabs {
+  	  		--paper-tabs-selection-bar-color: #0D47A1;
+  	  		margin-top: 16px;
+		}
+		paper-tab {
+  	  		--paper-tab-ink: #BBDEFB;
+		}
+
+		paper-tab iron-icon {
+  	  		margin-right: 10px;
+		}
+		paper-tab.iron-selected {
+  	  		background: rgb(66, 133, 244);
+  	  		color: white;
+		}
+	</style>
+
 </head>
 <body unresolved>
+	<template is="dom-bind">
 
-<template is="dom-bind">
+		<google-map map="{{map}}" latitude="39.952054" longitude="-75.193804"styles='[{"stylers":[{"saturation":-85}]},{"featureType":"water","stylers":[{"lightness":-20}]}]'  api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4">
+		</google-map>
 
-<google-map map="{{map}}" latitude="39.952054" longitude="-75.193804"styles='[{"stylers":[{"saturation":-85}]},{"featureType":"water","stylers":[{"lightness":-20}]}]'  api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4">
-</google-map>
+		<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4"
+			start-address="{{start}}"
+			end-address="{{end}}"
+			travel-mode="{{travelMode}}">
+		</google-map-directions>
 
-<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4"
-    start-address="{{start}}"
-    end-address="{{end}}"
-	travel-mode="{{travelMode}}">
-</google-map-directions>
-
-<div style="bottom: 25px; left: 25px; position: absolute"> 
-	<paper-card elevation="2">
-  	  <paper-icon-item>
-    	<iron-icon icon="search" item-icon></iron-icon>
-    	<paper-input label="Start address" 
-                 	 value="{{start}}"</paper-input>
-  	  </paper-icon-item>
-  	  <paper-icon-item>
-    	<iron-icon icon="search" item-icon></iron-icon>
-    	<paper-input label="End address"
-                 	 value="{{end}}"></paper-input>
-  	  </paper-icon-item>
-	<paper-card>
-
-	<paper-tabs selected="{{travelMode}}" attr-for-selected="label">
-  	  <paper-tab label="DRIVING">
-    	<iron-icon icon="maps:directions-car"></iron-icon>
-    	<span>DRIVING</span>
-  	  </paper-tab>
-  	  <paper-tab label="WALKING">
-    	<iron-icon icon="maps:directions-walk"></iron-icon>
-    	<span>WALKING</span>
-  	  </paper-tab>
-  	  <paper-tab label="BICYCLING">
-    	<iron-icon icon="maps:directions-bike"></iron-icon>
-    	<span>BICYCLING</span>
-  	  </paper-tab>
-  	  <paper-tab label="TRANSIT">
-    	<iron-icon icon="maps:directions-transit"></iron-icon>
-    	<span>TRANSIT</span>
-  	  </paper-tab>
-	</paper-tabs>
-</div>
-</template>
+		<div style="bottom: 25px; left: 25px; position: absolute"> 
+			<paper-card elevation="2">
+				<paper-icon-item>
+					<iron-icon icon="search" item-icon></iron-icon>
+					<paper-input label="Start address" 
+						value="{{start}}"</paper-input>
+				</paper-icon-item>
+				<paper-icon-item>
+					<iron-icon icon="search" item-icon></iron-icon>
+					<paper-input label="End address"
+						value="{{end}}"></paper-input>
+				</paper-icon-item>
+			<paper-card>
+				<paper-tabs selected="{{travelMode}}" attr-for-selected="label">
+					<paper-tab label="DRIVING">
+						<iron-icon icon="maps:directions-car"></iron-icon>
+						<span>DRIVING</span>
+					</paper-tab>
+					<paper-tab label="WALKING">
+						<iron-icon icon="maps:directions-walk"></iron-icon>
+						<span>WALKING</span>
+					</paper-tab>
+					<paper-tab label="BICYCLING">
+						<iron-icon icon="maps:directions-bike"></iron-icon>
+						<span>BICYCLING</span>
+					</paper-tab>
+					<paper-tab label="TRANSIT">
+						<iron-icon icon="maps:directions-transit"></iron-icon>
+						<span>TRANSIT</span>
+					</paper-tab>
+				</paper-tabs>
+			</paper-card>
+		</div>
+	</template>
+	<dom-module>
+		<template>
+			<script>
+				Polymer({
+					
+				});
+			</script>
+		</template>
+	</dom-module>
 </body>
 </html>
