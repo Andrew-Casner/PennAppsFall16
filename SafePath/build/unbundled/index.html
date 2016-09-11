@@ -52,9 +52,6 @@
 		<google-map map="{{map}}" latitude="39.952054" longitude="-75.193804" styles="[{&quot;stylers&quot;:[{&quot;saturation&quot;:-85}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;lightness&quot;:-20}]}]" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4">
 		</google-map>
 			<template is="dom-repeat" items="{{markers}}" as="item">
-				<div class="penn">
-					Lat: {{item.lat}} <br>	Long: {{item.long}}
-				</div>
 	  			<google-map-marker map="{{map}}" latitude="{{item.lat}}" longitude="{{item.long}}"></google-map-marker>
 			</template> 
 		<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4" start-address="{{start}}" end-address="{{end}}" travel-mode="{{travelMode}}">

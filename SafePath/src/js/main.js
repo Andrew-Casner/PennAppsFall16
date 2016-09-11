@@ -3,8 +3,8 @@ function getMarkers (elements){
         url: "https://data.phila.gov/resource/x5bc-ux9i.json",
         type: "GET",
         data: {
-          "$limit" : 1000,
-          "$where" : "text_general_code not in ('All Other Offenses','Recovered Stolen Motor Vehicle','Embezzlement','GAMBLING VIOLATIONS', 'D.U.I','FORGERY AND COUNTERFEITING','LIQUOR LAW VIOLATIONS')",
+          "$limit" : 200,
+          "$where" : "text_general_code in ('Homicide - Criminal', 'Rape','Robbery Firearm','Aggravated Assault Firearm')",
           "$$app_token" : "JUfo59aG1S63VK8p47c02wm4J"
         }, 
         success: function(data) {

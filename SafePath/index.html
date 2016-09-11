@@ -54,9 +54,6 @@
 		<google-map map="{{map}}" latitude="39.952054" longitude="-75.193804"styles='[{"stylers":[{"saturation":-85}]},{"featureType":"water","stylers":[{"lightness":-20}]}]'  api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4">
 		</google-map>
 			<template is="dom-repeat" items="{{markers}}" as="item">
-				<div class="penn">
-					Lat: {{item.lat}} </br>	Long: {{item.long}}
-				</div>
 	  			<google-map-marker map="{{map}}" latitude="{{item.lat}}" longitude="{{item.long}}"></google-map-marker>
 			</template> 
 		<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4"
