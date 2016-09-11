@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="src/js/main.js"></script>
 
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
@@ -45,17 +47,24 @@
 
 </head>
 <body unresolved>
+	<dom-module id="my-app"> 
+	
 	<template is="dom-bind">
-
+		<template>
 		<google-map map="{{map}}" latitude="39.952054" longitude="-75.193804"styles='[{"stylers":[{"saturation":-85}]},{"featureType":"water","stylers":[{"lightness":-20}]}]'  api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4">
 		</google-map>
-
+			<template is="dom-repeat" items="{{markers}}" as="item">
+				<div class="penn">
+					Lat: {{item.lat}} </br>	Long: {{item.long}}
+				</div>
+	  			<google-map-marker map="{{map}}" latitude="{{item.lat}}" longitude="{{item.long}}"></google-map-marker>
+			</template> 
 		<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4"
 			start-address="{{start}}"
 			end-address="{{end}}"
 			travel-mode="{{travelMode}}">
 		</google-map-directions>
-
+	</template>
 		<div style="bottom: 25px; left: 25px; position: absolute"> 
 			<paper-card elevation="2">
 				<paper-icon-item>
@@ -89,15 +98,21 @@
 				</paper-tabs>
 			</paper-card>
 		</div>
-	</template>
-	<dom-module>
-		<template>
-			<script>
+		<script>
 				Polymer({
-					
-				});
-			</script>
-		</template>
-	</dom-module>
+					properties : {
+				        markers : {
+				            type : Array,
+				            notify: true
+				        }
+    				},
+    				ready: function() {
+						getMarkers(this); 
+					}
+				}); 
+		</script>
+	</template>
+ 	</dom-module> 
+ 	<my-app></my-app>
 </body>
 </html>

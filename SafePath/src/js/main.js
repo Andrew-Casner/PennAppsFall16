@@ -1,24 +1,21 @@
-function getMarkers (){
-    alert('here'); 
+function getMarkers (elements){
     $.ajax({
         url: "https://data.phila.gov/resource/x5bc-ux9i.json",
         type: "GET",
         data: {
-          "$limit" : 100,
+          "$limit" : 1000,
           "$where" : "text_general_code not in ('All Other Offenses','Recovered Stolen Motor Vehicle','Embezzlement','GAMBLING VIOLATIONS', 'D.U.I','FORGERY AND COUNTERFEITING','LIQUOR LAW VIOLATIONS')",
           "$$app_token" : "JUfo59aG1S63VK8p47c02wm4J"
         }, 
         success: function(data) {
-            alert("Retrieved " + data.length + " records from the dataset!");
-            return populateMarkers(data); 
+            //alert("Retrieved " + data.length + " records from the dataset!");
+            elements.markers = populateMarkers(data); 
        },
        error: function() {
             alert('REQUEST FAILED!'); 
         }
     });
     
-    return null; 
-
 }
 
 function populateMarkers(data){
@@ -33,7 +30,9 @@ function populateMarkers(data){
             long: data[i]['shape']['coordinates'][0],
       });
     }
+    /*
     console.log('***Markers***\n'); 
     console.log(markers); 
+    */
     return markers; 
 }
