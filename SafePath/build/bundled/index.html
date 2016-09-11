@@ -2502,8 +2502,7 @@ var r=t.propertyDataFromStyles(n._styles,this),i=!this.__notStyleScopeCacheable;
 			</template> 
 		<google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4" start-address="{{start}}" end-address="{{end}}" travel-mode="{{travelMode}}">
 		</google-map-directions>
-	</template>
-		<div style="bottom: 25px; left: 25px; position: absolute"> 
+		<div style="bottom: 25px; left: 25px; z-index: 100; position: absolute"> 
 			<paper-card elevation="2">
 				<paper-icon-item>
 					<iron-icon icon="search" item-icon=""></iron-icon>
@@ -2533,7 +2532,8 @@ var r=t.propertyDataFromStyles(n._styles,this),i=!this.__notStyleScopeCacheable;
 					</paper-tab>
 				</paper-tabs>
 			</paper-card>
-		</paper-card></div>
+	</paper-card></div></template>
+		
 		<script>Polymer({properties:{markers:{type:Array,notify:!0}},ready:function(){getMarkers(this)}});</script>
 	</template>
  	</dom-module> 
