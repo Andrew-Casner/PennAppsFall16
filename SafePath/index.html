@@ -7,7 +7,9 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="src/js/main.js"></script>
   
   <link rel="import" href="bower_components/google-map/google-map.html">
   <link rel="import" href="bower_components/google-map/google-map-directions.html">
@@ -42,13 +44,20 @@
   </style>
   
 </head>
-<body unresolved>
+<body onload="init();" unresolved>
 <template is="dom-bind">
  
 <google-map map="{{map}}" latitude="39.952054" longitude="-75.193804"
     api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4" disable-default-ui zoom="13">
-  <google-map-marker latitude="39.952054" longitude="-75.193804"
-      title="Current Location" draggable="true"></google-map-marker>
+    <google-map-marker latitude="39.952054" longitude="-75.193804"
+      title="Current Location" draggable="true">
+    </google-map-marker>
+      <!--
+      <template is="dom-repeat" items="{{markers}}">
+            <google-map-marker map={{map}} latitude="{{item.lat}}" longitude="{{item.long}}">
+            </google-map-marker>
+      </template>
+      -->
 </google-map>
 
 <google-map-directions map="{{map}}" api-key="AIzaSyBkPtFtZh30WpVTuIglKFQGWU1glroJ7d4"
@@ -95,21 +104,5 @@
 </paper-card>
 
 </template>
-  <script type="text/javascript">
-      var myLatLng = {lat: 39.953173, lng: -75.192865};
-    
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: myLatLng
-      });
-    
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    
-    
-  </script>
 </body>
 </html>
